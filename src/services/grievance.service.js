@@ -10,7 +10,12 @@ const getAllGrievances = async () => {
     return Grievance.find();
   };
 
+  const searchGrievancesByPatientId = async (patientId) => {
+    return Grievance.find({ patientId });
+  };
+
 module.exports = {
   createGrievance,
-  getAllGrievances
+  getAllGrievances,
+  searchGrievancesByPatientId
 };

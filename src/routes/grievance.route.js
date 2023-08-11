@@ -9,7 +9,8 @@ router.post('/create', grievanceMiddleware.validateGrievance, grievanceControlle
 // Fetch all grievances (authorized route)
 router.get('/all', grievanceController.getAllGrievances);
 
-// Search grievances (authorized route)
-// router.get('/search', grievanceController.searchGrievances);
+// Search grievances by patientId (authorized route)
+router.get('/search/:patientId', grievanceController.searchGrievances);
+
 
 module.exports = router;

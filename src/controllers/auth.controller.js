@@ -7,7 +7,7 @@ const register = async (req, res) => {
     console.log("in controller--register--newUser", newUser);
     res.status(201).json({ message: 'User registered successfully', user: newUser });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to register user', error });
+    res.status(500).json({error: error.message });
   }
 };
 

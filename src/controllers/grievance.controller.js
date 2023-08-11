@@ -28,23 +28,20 @@ const getAllGrievances = async (req, res) => {
   }
 };
 
-const grievanceController = {
-  searchGrievances: async (req, res) => {
-    try {
-      const patientId = req.params.patientId;
-      const grievances = await grievanceService.searchByPatientId(patientId);
-      console.log("in controller--grievanceController--grievances", grievances);
-
-      res.status(200).json(grievances);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Internal server error" });
-    }
-  },
+const searchGrievances = async (req, res) => {
+  try {
+    const { patientId } = req.params;
+    const grievances = await grievanceService.searchGrievancesByPatientId(patientId);
+    console.log("in controller--searchGrievances--grievances", grievances);
+    res.json({ grievances });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to search grievances", error });
+  }
 };
 
 module.exports = {
   createGrievance,
   getAllGrievances,
-  grievanceController,
+  searchGrievances,
 };
+
